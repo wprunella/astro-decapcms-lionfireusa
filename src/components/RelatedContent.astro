@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+    currentPost: {
+        category: string;
+        slug: string;
+    };
+}
+
+const { currentPost } = Astro.props;
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+    .filter(post => 
+        post.data.category === currentPost.category && 
+        post.slug !== currentPost.slug
+    )
+    .slice(0, 3);
+---
+
+{relatedPosts.length > 0 && (
+    <section class="related-content">
+        <h2>More {currentPost.category} Content</h2>
+        <ul>
+            {relatedPosts.map(post => (
+                <li>
+                    <a href={`/blog/${post.slug}`}>
+                        <h3>{post.data.title}</h3>
+                        <p>{post.data.description}</p>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </section>
+)}
+
+<style>
+    .related-content {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .related-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .related-content ul {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 1.5rem;
+    }
+    
+    .related-content li a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        padding: 1rem;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+    }
+    
+    .related-content li a:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .related-content h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        color: var(--accent-light);
+    }
+    
+    .related-content p {
+        margin: 0;
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+</style>

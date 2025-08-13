@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { formatDate } from '../../utils/date';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 10);
+---
+
+<Layout title="Blog" description="Read our latest blog posts">
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">Latest Posts</h1>
+    <div class="space-y-8">
+      {posts.map(post => (
+        <article class="border dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <a href={`/blog/${post.slug}`} class="block">
+            <img 
+              src={post.data.image} 
+              alt={post.data.title}
+              class="w-full h-64 object-cover"
+            />
+          </a>
+          <div class="p-6">
+            <h2 class="text-2xl font-bold mb-2">
+              <a href={`/blog/${post.slug}`} class="hover:text-emerald-600 dark:hover:text-emerald-400">
+                {post.data.title}
+              </a>
+            </h2>
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              {formatDate(post.data.date)}
+            </div>
+            <p class="text-gray-700 dark:text-gray-300">
+              {post.data.description}
+            </p>
+            <div class="mt-4">
+              <a 
+                href={`/blog/${post.slug}`}
+                class="inline-flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:underline"
+              >
+                Read more
+                <svg class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>
