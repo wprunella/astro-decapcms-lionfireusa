@@ -151,83 +151,76 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"abraham-lincoln.md": {
-	id: "abraham-lincoln.md";
-  slug: "abraham-lincoln";
+"civil-rights.mdx": {
+	id: "civil-rights.mdx";
+  slug: "civil-rights";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"andrew-carnegie.md": {
-	id: "andrew-carnegie.md";
-  slug: "andrew-carnegie";
+} & { render(): Render[".mdx"] };
+"cold-war.mdx": {
+	id: "cold-war.mdx";
+  slug: "cold-war";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"benjamin-franklin.md": {
-	id: "benjamin-franklin.md";
-  slug: "benjamin-franklin";
+} & { render(): Render[".mdx"] };
+"declaration-of-independence.mdx": {
+	id: "declaration-of-independence.mdx";
+  slug: "declaration-of-independence";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"eleanor-roosevelt.md": {
-	id: "eleanor-roosevelt.md";
-  slug: "eleanor-roosevelt";
+} & { render(): Render[".mdx"] };
+"ford.mdx": {
+	id: "ford.mdx";
+  slug: "ford";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"george-washington.md": {
-	id: "george-washington.md";
-  slug: "george-washington";
+} & { render(): Render[".mdx"] };
+"gates.mdx": {
+	id: "gates.mdx";
+  slug: "gates";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"martin-luther-king-jr.md": {
-	id: "martin-luther-king-jr.md";
-  slug: "martin-luther-king-jr";
+} & { render(): Render[".mdx"] };
+"industrial-revolution.mdx": {
+	id: "industrial-revolution.mdx";
+  slug: "industrial-revolution";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"neil-armstrong.md": {
-	id: "neil-armstrong.md";
-  slug: "neil-armstrong";
+} & { render(): Render[".mdx"] };
+"jefferson.mdx": {
+	id: "jefferson.mdx";
+  slug: "jefferson";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"oprah-winfrey.md": {
-	id: "oprah-winfrey.md";
-  slug: "oprah-winfrey";
+} & { render(): Render[".mdx"] };
+"new-deal.mdx": {
+	id: "new-deal.mdx";
+  slug: "new-deal";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"rosa-parks.md": {
-	id: "rosa-parks.md";
-  slug: "rosa-parks";
+} & { render(): Render[".mdx"] };
+"rockefeller.mdx": {
+	id: "rockefeller.mdx";
+  slug: "rockefeller";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"steve-jobs.md": {
-	id: "steve-jobs.md";
-  slug: "steve-jobs";
+} & { render(): Render[".mdx"] };
+"silicon-valley.mdx": {
+	id: "silicon-valley.mdx";
+  slug: "silicon-valley";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"thomas-jefferson.md": {
-	id: "thomas-jefferson.md";
-  slug: "thomas-jefferson";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 };
 
 	};

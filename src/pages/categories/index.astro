@@ -3,10 +3,10 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 const posts = await getCollection('blog');
-const categories = [...new Set(posts.map(post => post.data.category))];
+const categories = [...new Set(posts.flatMap(post => post.data.categories))];
 const categoryCount = categories.map(category => ({
   name: category,
-  count: posts.filter(post => post.data.category === category).length
+  count: posts.filter(post => post.data.categories.includes(category)).length
 }));
 ---
 

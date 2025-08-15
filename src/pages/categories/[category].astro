@@ -5,14 +5,14 @@ import { formatDate } from '../../utils/date';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const categories = [...new Set(posts.map(post => post.data.category))];
+  const categories = [...new Set(posts.flatMap(post => post.data.categories))];
   
   return categories.map(category => ({
     params: { category: category.toLowerCase() },
     props: { 
       category,
       posts: posts
-        .filter(post => post.data.category === category)
+        .filter(post => post.data.categories.map(c => c.toLowerCase()).includes(category.toLowerCase()))
         .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
     },
   }));
@@ -42,6 +42,8 @@ const { category, posts } = Astro.props;
             </h2>
             <div class="text-sm text-gray-600 dark:text-gray-400 mb-4">
               {formatDate(post.data.date)}
+              <span class="mx-2">•</span>
+              <span>{post.data.categories.join(', ')}</span>
             </div>
             <p class="text-gray-700 dark:text-gray-300">
               {post.data.description}

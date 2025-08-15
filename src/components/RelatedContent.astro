@@ -12,7 +12,7 @@ const { currentPost } = Astro.props;
 const allPosts = await getCollection('blog');
 const relatedPosts = allPosts
     .filter(post => 
-        post.data.category === currentPost.category && 
+        post.data.categories.includes(currentPost.category) && 
         post.slug !== currentPost.slug
     )
     .slice(0, 3);
