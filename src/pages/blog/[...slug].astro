@@ -20,9 +20,9 @@ const { Content } = await entry.render();
   <article class="prose mx-auto">
     <h1>{entry.data.title}</h1>
     <p class="text-gray-500">{entry.data.date.toLocaleDateString()}</p>
-    
+     
     {entry.data.image && (
-      <img 
+     <img 
         src={entry.data.image} 
         alt={entry.data.title} 
         class="w-full h-auto rounded-lg shadow-lg mb-8"
@@ -31,6 +31,7 @@ const { Content } = await entry.render();
     
     <Content />
 
+    
     <RelatedContent currentPost={{
       category: entry.data.categories[0],
       slug: entry.slug
