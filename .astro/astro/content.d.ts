@@ -150,78 +150,14 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"blog": {
-"civil-rights.mdx": {
-	id: "civil-rights.mdx";
-  slug: "civil-rights";
+		"blog": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"cold-war.mdx": {
-	id: "cold-war.mdx";
-  slug: "cold-war";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"declaration-of-independence.mdx": {
-	id: "declaration-of-independence.mdx";
-  slug: "declaration-of-independence";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"ford.mdx": {
-	id: "ford.mdx";
-  slug: "ford";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"gates.mdx": {
-	id: "gates.mdx";
-  slug: "gates";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"industrial-revolution.mdx": {
-	id: "industrial-revolution.mdx";
-  slug: "industrial-revolution";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"jefferson.mdx": {
-	id: "jefferson.mdx";
-  slug: "jefferson";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"new-deal.mdx": {
-	id: "new-deal.mdx";
-  slug: "new-deal";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"rockefeller.mdx": {
-	id: "rockefeller.mdx";
-  slug: "rockefeller";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"silicon-valley.mdx": {
-	id: "silicon-valley.mdx";
-  slug: "silicon-valley";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-};
+  data: InferEntrySchema<"blog">;
+  render(): Render[".md"];
+}>;
 
 	};
 
