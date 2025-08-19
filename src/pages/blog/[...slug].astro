@@ -21,22 +21,12 @@ const readingTime = Math.ceil(entry.body.split(' ').length / 200);
 <BaseLayout title={entry.data.title} description={entry.data.description}>
   <article class="prose mx-auto">
     <h1>{entry.data.title}</h1>
-    <div class="flex items-center gap-2 text-gray-500 mb-2">
-      <span>{formatDate(entry.data.date)}</span>
+    <div class="flex items-center italic gap-2 text-gray-500 mb-2">
+      <span>Posted on {formatDate(entry.data.date)}</span>
       <span>•</span>
       <span>{readingTime} min read</span>
     </div>
-    
-    <div class="flex flex-wrap gap-2 mb-6 ">
-      {entry.data.categories.map(category => (
-        <a 
-          href={`/categories/${category.toLowerCase()}`}
-        >
-          <div class="px-4 py-2 text-white no-underline bg-blue-500 hover:bg-blue-600 transition-colors rounded">{category}</div>
-        </a>
-      ))}
-    </div>
-     
+ 
     {entry.data.image && (
      <img 
         src={entry.data.image} 
@@ -46,6 +36,16 @@ const readingTime = Math.ceil(entry.body.split(' ').length / 200);
     )}
     
     <Content />
+
+		    <div class="flex flex-wrap gap-2 mb-6">
+      {entry.data.categories.map(category => (
+        <a 
+          href={`/categories/${category.toLowerCase()}`}
+        >
+          <button class="px-4 py-2 text-white no-underline hover:no-underline bg-blue-600 hover:bg-blue-800 transition-colors rounded">{category}</button>
+        </a>
+      ))}
+    </div>
     
     <RelatedContent currentPost={{
       category: entry.data.categories[0],
