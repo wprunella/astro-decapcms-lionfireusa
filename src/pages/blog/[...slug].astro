@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Card from '../../components/Card.astro';
 import RelatedContent from '../../components/RelatedContent.astro';
+import SocialShare from '../../components/SocialShare.astro';
 import { formatDate } from '../../utils/date';
 
 export async function getStaticPaths() {
@@ -16,6 +17,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 const readingTime = Math.ceil(entry.body.split(' ').length / 200);
+const currentUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
@@ -37,7 +39,7 @@ const readingTime = Math.ceil(entry.body.split(' ').length / 200);
     
     <Content />
 
-		    <div class="flex flex-wrap gap-2 mb-6">
+    <div class="flex flex-wrap gap-2 mb-6">
       {entry.data.categories.map(category => (
         <a 
           href={`/categories/${category.toLowerCase()}`}
@@ -46,6 +48,8 @@ const readingTime = Math.ceil(entry.body.split(' ').length / 200);
         </a>
       ))}
     </div>
+    
+    <SocialShare url={currentUrl} title={entry.data.title} />
     
     <RelatedContent currentPost={{
       category: entry.data.categories[0],

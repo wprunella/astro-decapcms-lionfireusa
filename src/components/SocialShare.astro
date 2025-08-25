@@ -5,15 +5,14 @@ interface Props {
 }
 
 const { url, title } = Astro.props;
-const encodedUrl = encodeURIComponent(url);
-const encodedTitle = encodeURIComponent(title);
+
 ---
 
 <div class="social-share">
   <h3>Share this post:</h3>
   <div class="share-links">
     <a 
-      href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+      href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Share on Twitter"
@@ -24,7 +23,7 @@ const encodedTitle = encodeURIComponent(title);
       </svg>
     </a>
     <a 
-      href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Share on Facebook"
@@ -35,7 +34,7 @@ const encodedTitle = encodeURIComponent(title);
       </svg>
     </a>
     <a 
-      href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`}
+      href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Share on LinkedIn"
@@ -92,9 +91,17 @@ const encodedTitle = encodeURIComponent(title);
     background-color: rgba(29, 161, 242, 0.1);
   }
 
+  .twitter:hover {
+    background-color: rgba(29, 161, 242, 0.2);
+  }
+
   .facebook {
     color: #1877F2;
     background-color: rgba(24, 119, 242, 0.1);
+  }
+
+  .facebook:hover {
+    background-color: rgba(24, 119, 242, 0.2);
   }
 
   .linkedin {
@@ -102,7 +109,7 @@ const encodedTitle = encodeURIComponent(title);
     background-color: rgba(10, 102, 194, 0.1);
   }
 
-  .share-links a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+  .linkedin:hover {
+    background-color: rgba(10, 102, 194, 0.2);
   }
 </style>
