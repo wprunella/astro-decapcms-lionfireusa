@@ -24,7 +24,7 @@ const { category, posts } = Astro.props;
 <Layout title={`${category} Posts`} description={`Blog posts in the ${category} category`}>
   <main class="max-w-4xl mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold mb-8">Posts in {category}</h1>
-    <div class="space-y-8">
+    <div class="grid gap-8 md:grid-cols-2">
       {posts.map(post => (
         <article class="border dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
           <a href={`/blog/${post.slug}`} class="block">
